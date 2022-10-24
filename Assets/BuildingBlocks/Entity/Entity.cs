@@ -24,6 +24,15 @@ public class Entity : MonoBehaviour {
   }
 
   virtual public void Update() {
+    DoLook();
+  }
+
+  //LOOK
+  void Look(Vector3 lookTarget) {
+    _lookTarget = lookTarget;
+  }
+
+  void DoLook() {
     if(_lookTarget != Vector3.zero) {
       transform.LookAt(new Vector3(_lookTarget.x, transform.position.y, _lookTarget.z));
     } else {
@@ -32,11 +41,6 @@ public class Entity : MonoBehaviour {
         transform.LookAt(moveDirection);
       }
     }
-  }
-
-  //LOOK
-  void Look(Vector3 lookTarget) {
-    _lookTarget = lookTarget;
   }
 
   //MOVEMENT
