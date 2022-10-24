@@ -25,7 +25,7 @@ public class Entity : MonoBehaviour {
 
   virtual public void Update() {
     if(_lookTarget != Vector3.zero) {
-      transform.LookAt(_lookTarget);
+      transform.LookAt(new Vector3(_lookTarget.x, transform.position.y, _lookTarget.z));
     } else {
       if(_rigidbody.velocity.magnitude > 0.01f) {
         Vector3 moveDirection = transform.position + _rigidbody.velocity.normalized;

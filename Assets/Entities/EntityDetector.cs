@@ -57,6 +57,8 @@ public class EntityDetector : MonoBehaviour {
       if(detectedEntities.Count > 0) { // make sure the entity hasn't left before trying to invoke on it
         Entity firstDetectedEntity = detectedEntities[0];
         detectAction.Invoke(firstDetectedEntity);
+      } else {
+        undetectAction.Invoke(null);
       }
     }
   }
