@@ -22,6 +22,12 @@ public class EntityDetector : MonoBehaviour {
     sphereCollider.radius = detectionRadius;
   }
 
+  void Update() {
+    detectedEntities.ForEach(entity => {
+      if(!entity) detectedEntities.Remove(entity);
+    });
+  }
+
   bool ValidateTag(Entity entity) {
     return tagToDetect != null ? entity.CompareTag(tagToDetect) : true;
   }
