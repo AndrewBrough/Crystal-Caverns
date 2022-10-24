@@ -13,6 +13,8 @@ public enum AIAction {
 public class AI : MonoBehaviour {
   protected Entity _entity;
   public Transform targetPosition;
+  public float followTime = 1.0f;
+  public float timeBetweenAttacks = 1.0f;
 
   List<AIAction> actionQueue;
 
@@ -36,14 +38,14 @@ public class AI : MonoBehaviour {
   // An action must add an action to queue, wait, then remove itself and start another action (or not)
   virtual public IEnumerator Follow() {
     actionQueue.Add(AIAction.Move);
-    yield return new WaitForSeconds(2.0f);
+    yield return new WaitForSeconds(followTime);
     actionQueue.RemoveAt(0);
     StartCoroutine(Idle());
   }
 
   virtual public IEnumerator Idle() {
     actionQueue.Add(AIAction.Idle);
-    yield return new WaitForSeconds(2.0f);
+    yield return new WaitForSeconds(timeBetweenAttacks);
     actionQueue.RemoveAt(0);
     StartCoroutine(Follow());
   }

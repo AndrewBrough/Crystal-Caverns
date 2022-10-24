@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  speed: 2000
+  speed: 1000
   weapon: {fileID: 0}
   touchDamage: 1
 --- !u!114 &8717493758228252589
