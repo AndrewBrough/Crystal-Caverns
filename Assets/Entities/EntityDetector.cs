@@ -10,10 +10,12 @@ public class EntityDetectedEvent : UnityEvent<Entity> {}
 public class EntityDetector : MonoBehaviour {
   public float detectionRadius = 5.0f;
   public string tagToDetect = null;
+  public float timeBetweenRepeatActions = 1.0f;
+
   public EntityDetectedEvent detectAction;
   public EntityDetectedEvent undetectAction;
-  public List<Entity> detectedEntities = new List<Entity>();
-  public float timeBetweenRepeatActions = 1.0f;
+  public List<Entity> detectedEntities = new List<Entity>(); // TODO make private when done debugging
+  
 
   void OnValidate() {
     SphereCollider sphereCollider = GetComponent<SphereCollider>();
