@@ -19,7 +19,7 @@ public class Entity : MonoBehaviour {
 
   protected AttackController _attackController;
 
-  protected Vector3 _lookTarget = Vector3.zero;
+  protected Transform _lookTarget = null;
 
   void Awake() {
     _rigidbody = GetComponent<Rigidbody>();
@@ -32,13 +32,13 @@ public class Entity : MonoBehaviour {
   }
 
   //LOOK
-  void Look(Vector3 lookTarget) {
+  void Look(Transform lookTarget) {
     _lookTarget = lookTarget;
   }
 
   void DoLook() {
-    if(_lookTarget != Vector3.zero) {
-      transform.LookAt(new Vector3(_lookTarget.x, transform.position.y, _lookTarget.z));
+    if(_lookTarget != null) {
+      transform.LookAt(new Vector3(_lookTarget.position.x, transform.position.y, _lookTarget.position.z));
     } else {
       if(_rigidbody.velocity.magnitude > 0.01f) {
         Vector3 moveDirection = transform.position + _rigidbody.velocity.normalized;
@@ -70,12 +70,12 @@ public class Entity : MonoBehaviour {
   // COMBAT
   virtual public void Attack(Entity entity = null) {
     _attackController.Attack();
-    if(entity) Look(entity.transform.position);
+    if(entity) Look(entity.transform);
   }
 
   virtual public void EndAttack() {
     _attackController.EndAttack();
-    _lookTarget = Vector3.zero;
+    _lookTarget = null;
   }
 
   virtual public void Hurt(int amount) {

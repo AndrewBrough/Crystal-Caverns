@@ -315,7 +315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  speed: 2500
+  speed: 1300
 --- !u!54 &9066020208815901135
 Rigidbody:
   m_ObjectHideFlags: 0
