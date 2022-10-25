@@ -5,13 +5,15 @@ using UnityEngine;
 public class Weapon : MonoBehaviour {
 
   public int damage = 1;
-  public float attackDuration_seconds = 0.2f;
   protected Collider _collider;
+
+  public Animator animator;
 
   void OnValidate() {
     BoxCollider boxCollider = GetComponent<BoxCollider>();
     if(!boxCollider) boxCollider = gameObject.AddComponent<BoxCollider>();
     boxCollider.isTrigger = true;
+    animator = GetComponentInChildren<Animator>();
   }
 
   void Awake() {
@@ -20,16 +22,11 @@ public class Weapon : MonoBehaviour {
     _collider.enabled = false;
   }
 
+  /// <summary>
+  /// Play animation which will control hitbox.
+  /// </summary>
   virtual public void Attack() {
-    Debug.Log("Attack!");
-    // play animation or set trigger enabled
-    _collider.enabled = true;
-    StartCoroutine(EndAttack());
-  }
-
-  IEnumerator EndAttack() {
-    yield return new WaitForSeconds(attackDuration_seconds);
-    _collider.enabled = false;
+    animator.SetTrigger("Attack");
   }
 
   void OnTriggerEnter(Collider collider) {

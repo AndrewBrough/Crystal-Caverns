@@ -10,7 +10,6 @@ public class EntityDetectedEvent : UnityEvent<Entity> {}
 public class EntityDetector : MonoBehaviour {
   public float detectionRadius = 5.0f;
   public string tagToDetect = null;
-  public float timeBetweenRepeatActions = 1.0f;
 
   public EntityDetectedEvent detectAction;
   public EntityDetectedEvent undetectAction;
@@ -39,7 +38,6 @@ public class EntityDetector : MonoBehaviour {
     if(entity && ValidateTag(entity)) {
       detectedEntities.Add(entity);
       detectAction.Invoke(entity);
-      StartCoroutine(RepeatAction());
     }
   }
 
@@ -48,18 +46,6 @@ public class EntityDetector : MonoBehaviour {
     if(entity && ValidateTag(entity)) {
       detectedEntities.Remove(entity);
       undetectAction.Invoke(entity);
-    }
-  }
-
-  IEnumerator RepeatAction() {
-    while(detectedEntities.Count > 0) {
-      yield return new WaitForSeconds(timeBetweenRepeatActions);
-      if(detectedEntities.Count > 0) { // make sure the entity hasn't left before trying to invoke on it
-        Entity firstDetectedEntity = detectedEntities[0];
-        detectAction.Invoke(firstDetectedEntity);
-      } else {
-        undetectAction.Invoke(null);
-      }
     }
   }
 }

@@ -5,6 +5,10 @@ public enum EntityAnimation {
   walking = 1,
 }
 
+/// <summary>
+/// Should manage state and delegate actions to other controllers.
+/// eg. AttackController
+/// </summary>
 public class Entity : MonoBehaviour {
 
   private Rigidbody _rigidbody;
@@ -13,14 +17,14 @@ public class Entity : MonoBehaviour {
   public int health = 3;
   public float speed = 100.0f;
 
-  public Weapon weapon;
+  protected AttackController _attackController;
 
   protected Vector3 _lookTarget = Vector3.zero;
 
   void Awake() {
     _rigidbody = GetComponent<Rigidbody>();
     _animator = GetComponent<Animator>();
-    weapon = GetComponentInChildren<Weapon>();
+    _attackController = GetComponent<AttackController>();
   }
 
   virtual public void Update() {
@@ -65,11 +69,12 @@ public class Entity : MonoBehaviour {
 
   // COMBAT
   virtual public void Attack(Entity entity = null) {
-    weapon.Attack();
+    _attackController.Attack();
     if(entity) Look(entity.transform.position);
   }
 
   virtual public void EndAttack() {
+    _attackController.EndAttack();
     _lookTarget = Vector3.zero;
   }
 
