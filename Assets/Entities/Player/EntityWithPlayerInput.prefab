@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weapon: {fileID: 0}
-  timeBetweenAttacks: 1
+  timeBetweenAttacks: 0.5
 --- !u!1001 &2747290833192704187
 PrefabInstance:
   m_ObjectHideFlags: 0

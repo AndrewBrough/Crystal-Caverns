@@ -38,4 +38,12 @@ public class Weapon : MonoBehaviour {
     }
   }
 
+  public void EnableTrigger() {
+    _collider.enabled = true;
+  }
+
+  public void DisableTrigger() {
+    _collider.enabled = false;
+  }
+
 }

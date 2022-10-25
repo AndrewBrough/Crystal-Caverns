@@ -5,10 +5,11 @@ public class AttackController : MonoBehaviour {
 
   [Tooltip("Which Weapon component to perform the attack.")]
   public Weapon weapon;
-  [Tooltip("Time in seconds to repeat attack. Set to 0 for no repeating.")]
+  [Tooltip("Time in seconds to repeat attack. Set to 0 for no repeating. Take care not to make this faster than your attack animation or your animation will be cut short.")]
   public float timeBetweenAttacks = 1.0f;
 
   protected Entity _target; // unused
+  protected IEnumerator attackCoroutine;
 
   void Awake() {
     weapon = GetComponentInChildren<Weapon>();
@@ -16,11 +17,12 @@ public class AttackController : MonoBehaviour {
 
   virtual public void Attack(Entity target = null) {
     _target = target;
-    StartCoroutine(AttackRoutine());
+    attackCoroutine = AttackRoutine();
+    StartCoroutine(attackCoroutine);
   }
 
   virtual public void EndAttack() {
-    StopCoroutine(AttackRoutine());
+    StopCoroutine(attackCoroutine);
   }
 
   IEnumerator AttackRoutine() {

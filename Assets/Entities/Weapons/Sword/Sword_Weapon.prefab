@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5922860580880936529}
   - component: {fileID: 2358648178155587308}
   - component: {fileID: 8500711491421120215}
+  - component: {fileID: 690151411431238635}
   m_Layer: 0
   m_Name: Sword_Weapon
   m_TagString: Untagged
@@ -46,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  animator: {fileID: 7526457487828203900}
+  animator: {fileID: 690151411431238635}
 --- !u!65 &8500711491421120215
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -60,6 +61,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.87}
   m_Center: {x: 0, y: 0, z: 0.75}
+--- !u!95 &690151411431238635
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7686324183459168936}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a4c82d319b16447dfbddb90e6a1e992e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &6788911306705781966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -117,32 +137,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3fd952be6bb084eb7892819aacf228d6, type: 3}
---- !u!1 &5978078860306676127 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3fd952be6bb084eb7892819aacf228d6, type: 3}
-  m_PrefabInstance: {fileID: 6788911306705781966}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6466526538893992741 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3fd952be6bb084eb7892819aacf228d6, type: 3}
   m_PrefabInstance: {fileID: 6788911306705781966}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &7526457487828203900
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5978078860306676127}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a4c82d319b16447dfbddb90e6a1e992e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
